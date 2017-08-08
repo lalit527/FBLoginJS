@@ -30,7 +30,9 @@
 
 <script>
 function myFacebookLogin() {
-	  FB.login(function(){}, {scope: 'publish_actions'});
+	  FB.login(function(response){
+		  console.log(response);
+	  }, {scope: 'publish_actions'});
 	}
 </script>
         

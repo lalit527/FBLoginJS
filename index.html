@@ -1,52 +1,45 @@
-<!DOCTYPE html>
 <html>
-
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <link rel="stylesheet" href="style.css">
+<head> 
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <link rel="stylesheet" href="style.css" />
+  <title>jQuery Example</title>
+  
 </head>
-
 <body>
-    <div class="container-fluid initial-div">
-        <div class="row">
-            Hi I am Lalit - <a id="facebookBtn" href="#">Click here to get my facebook info</a>
-        </div>
-    </div>
+  <div id="fb-root"></div>
+         <script>
+  window.fbAsyncInit = function() {
+    FB.init({
+      appId            : '415721068825146',
+      autoLogAppEvents : true,
+      xfbml            : true,
+      version          : 'v2.10'
+    });
+    FB.AppEvents.logPageView();
+	
+  };
 
-  <div class="conatiner-fluid">
-    <div class="row">
-      <div class="col-xs-12 col-sm-4 col-sm-offset-1 profile-bs-div">
-      <div class="profile-feed" id="profile-con">
-          <div class="profile-wrapper">
-              <p>
-                  email - <span id="myEmail"></span>
-              </p>
-              <p>
-                  Profile Url - <span id="myProfileId"></span>
-              </p>
-              <p>
-                  <span id="myHomeTown"></span> <span id="fullName"></span>
-              </p>
-          </div>
-      </div>
-      </div>
-      <div class="col-xs-12 col-sm-7 feed-bs-div">
-      <div class="conatiner-feed" id="feed-con">
-          <div class="conatiner-wrapper" id="feed-wrapper">
-          </div>
-          <div class="loader"></div>
-      </div>
-      </div>
-    </div>
-  </div>
+  (function(d, s, id){
+     var js, fjs = d.getElementsByTagName(s)[0];
+     if (d.getElementById(id)) {return;}
+     js = d.createElement(s); js.id = id;
+     js.src = "https://connect.facebook.net/en_US/sdk.js";
+     fjs.parentNode.insertBefore(js, fjs);
+   }(document, 'script', 'facebook-jssdk'));
+</script>
 
-    <!-- Latest compiled and minified JavaScript -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script type="text/javascript" src="app.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    <script src="http://ajax.cdnjs.com/ajax/libs/json2/20110223/json2.js"></script>
+<script>
+function myFacebookLogin() {
+	  FB.login(function(){}, {scope: 'publish_actions'});
+	}
+</script>
+        
+
+        <button onclick="myFacebookLogin();">Login Facebook</button>
+
+        <br>
+
+        <button onclick="logout();">Logout from Facebook</button>
+
 </body>
-
 </html>

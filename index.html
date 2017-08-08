@@ -32,7 +32,7 @@
 function myFacebookLogin() {
 	  FB.login(function(response){
 		  console.log(response);
-		  console.log(response.accessToken);
+		  console.log(response.authResponse.accessToken);
 	  }, {scope: 'publish_actions'});
 	}
 </script>
